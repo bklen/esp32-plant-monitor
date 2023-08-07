@@ -26,10 +26,12 @@ Optional Tools
   * 1x [DHT22/AM2302 Digital Temperature And Humidity Sensor](https://a.co/d/7EfM90X)
   * 1x [Capacitive Soil Moisture Sensor](https://a.co/d/dryRND9)
 
-## Step 1: Wire Prototype + Calibrate Soil Moisture Sensor
+## Step 1: Wire Prototype
 ![moisture_sensor_dry_calibration](https://github.com/bklen/esp32-plant-monitor/assets/6707864/0384db8d-674f-4a84-a8d5-9855474cc3c2)
   1. Connect the analog output from the soil moisture sensor to pin 33(ADC1 CH5)
   2. Connect the data out from the DHT22 to GPIO 32
 
 Note ([From the ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/v4.2/esp32/api-reference/peripherals/adc.html))
 - "ADC2 is used by the Wi-Fi driver. Therefore the application can only use ADC2 when the Wi-Fi driver has not started."
+
+## Step 2: Flash the code + Calibrate Soil Moisture Sensor
