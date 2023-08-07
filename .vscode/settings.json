@@ -1,0 +1,46 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.adapterTargetName": "esp32",
+    "idf.customExtraPaths": "C:\\esp\\tools\\Espressif\\tools\\xtensa-esp-elf-gdb\\11.2_20220823\\xtensa-esp-elf-gdb\\bin;C:\\esp\\tools\\Espressif\\tools\\riscv32-esp-elf-gdb\\11.2_20220823\\riscv32-esp-elf-gdb\\bin;C:\\esp\\tools\\Espressif\\tools\\xtensa-esp32-elf\\esp-2021r2-patch5-8.4.0\\xtensa-esp32-elf\\bin;C:\\esp\\tools\\Espressif\\tools\\xtensa-esp32s2-elf\\esp-2021r2-patch5-8.4.0\\xtensa-esp32s2-elf\\bin;C:\\esp\\tools\\Espressif\\tools\\xtensa-esp32s3-elf\\esp-2021r2-patch5-8.4.0\\xtensa-esp32s3-elf\\bin;C:\\esp\\tools\\Espressif\\tools\\riscv32-esp-elf\\esp-2021r2-patch5-8.4.0\\riscv32-esp-elf\\bin;C:\\esp\\tools\\Espressif\\tools\\esp32ulp-elf\\2.35_20220830\\esp32ulp-elf\\bin;C:\\esp\\tools\\Espressif\\tools\\cmake\\3.23.1\\bin;C:\\esp\\tools\\Espressif\\tools\\openocd-esp32\\v0.11.0-esp32-20221026\\openocd-esp32\\bin;C:\\esp\\tools\\Espressif\\tools\\ninja\\1.10.2;C:\\esp\\tools\\Espressif\\tools\\idf-exe\\1.0.3;C:\\esp\\tools\\Espressif\\tools\\ccache\\4.3\\ccache-4.3-windows-64;C:\\esp\\tools\\Espressif\\tools\\dfu-util\\0.9\\dfu-util-0.9-win64",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "C:\\esp\\tools\\Espressif\\tools\\openocd-esp32\\v0.11.0-esp32-20221026/openocd-esp32/share/openocd/scripts",
+        "IDF_CCACHE_ENABLE": "1"
+    },
+    "idf.espIdfPathWin": "C:/esp/esp-idf/",
+    "idf.openOcdConfigs": [
+        "board/esp32-wrover-kit-3.3v.cfg"
+    ],
+    "idf.portWin": "COM1",
+    "idf.pythonBinPathWin": "C:/esp/tools/Espressif/python_env/idf4.4_py3.11_env/Scripts/python.exe",
+    "idf.toolsPathWin": "C:\\esp\\tools\\Espressif",
+    "idf.flashType": "JTAG",
+    "files.associations": {
+        "adc.h": "c",
+        "gpio.h": "c",
+        "*.tcc": "c",
+        "optional": "c",
+        "istream": "c",
+        "ostream": "c",
+        "ratio": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "regex": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "cjson.h": "c",
+        "string": "c",
+        "string_view": "c",
+        "esp_event.h": "c",
+        "esp_event_loop.h": "c",
+        "nvs_flash.h": "c",
+        "esp_wifi.h": "c",
+        "esp_log.h": "c",
+        "event_groups.h": "c",
+        "task.h": "c",
+        "stdio.h": "c",
+        "moisture_sensor.h": "c",
+        "freertos.h": "c"
+    }
+}

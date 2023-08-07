@@ -1,0 +1,29 @@
+menu "WIFI/MQTT"
+
+    config WIFI_SSID
+        string "SSID"
+        default "my ssid"
+    
+    config WIFI_PASSWORD
+        string "PASSWORD"
+        default "my password"
+    
+    config MQTT_URI
+        string "MQTT URI"
+        default "mqtt://192.168.1.177/:1883"
+        help
+            The mqtt broker URI
+    
+    config MQTT_USERNAME
+        string "MQTT_USERNAME"
+        default "my mqtt username"
+        help
+            mqtt username
+
+    config MQTT_PASSWORD
+        string "MQTT_PASSWORD"
+        default "my mqtt password"
+        help
+            mqtt password
+    
+endmenu
