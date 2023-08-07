@@ -6,6 +6,7 @@ This custom plant monitor utilizes the ESP32 running FreeRTOS to connect to WI-F
 v1.0  
 Created: on August 6 2023  
 Author: bklen  
+![image](https://github.com/bklen/esp32-plant-monitor/assets/6707864/2e4c311b-9e9d-4f68-a219-b0023e522d44)
 
 ## Dependencies
 MQTT broker
