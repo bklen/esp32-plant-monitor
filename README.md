@@ -1,5 +1,5 @@
 # ESP32 Plant Monitor
-ESP32 Plant monitoring system that publishes sensor data to MQTT.
+ESP32 Plant monitoring system that publishes sensor data to an MQTT broker.
 
 This custom plant monitor utilizes the ESP32 running FreeRTOS to connect to WI-FI and publish temperature, humidity, and soil moisture levels to an MQTT broker.
 
