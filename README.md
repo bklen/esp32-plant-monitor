@@ -32,8 +32,8 @@ Optional Tools
 ![prototype](https://github.com/bklen/esp32-plant-monitor/assets/6707864/bdecdc65-500c-43bd-852b-1601ec918a83)
   1. Connect the analog output from the soil moisture sensor to pin 33(ADC1 CH5)
   2. Connect the data out from the DHT22 to GPIO 32
-  3. Connect the SDA pin from the ambient light sensor to GPIO 21
-  4. Connect the SCL pin from the ambient light sensor to GPIO 22
+  3. Connect the SDA pin from the ambient light sensor(VEML7700) to GPIO 21
+  4. Connect the SCL pin from the ambient light sensor(VEML7700) to GPIO 22
 
 Note ([From the ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/v4.2/esp32/api-reference/peripherals/adc.html))
 - "ADC2 is used by the Wi-Fi driver. Therefore the application can only use ADC2 when the Wi-Fi driver has not started."
