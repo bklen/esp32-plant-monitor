@@ -130,8 +130,6 @@ void OnConnected(void *params)
     }
 }
 
-
-
 void sensor_reader_task(void *params)
 {
     // Initialize I2C for veml7700 sensor
