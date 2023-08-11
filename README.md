@@ -1,7 +1,7 @@
 # ESP32 Plant Monitor
 ESP32 Plant monitoring system that publishes sensor data to an MQTT broker.
 
-This custom plant monitor utilizes the ESP32 running FreeRTOS to connect to WI-FI and publish temperature, humidity, and soil moisture levels to an MQTT broker.
+This custom plant monitor utilizes the ESP32 running FreeRTOS to connect to WI-FI and publish temperature, humidity, soil moisture levels, and ambient light data to an MQTT broker.
 
 v1.0  
 Created: on August 6 2023  
@@ -26,11 +26,14 @@ Optional Tools
      * [Pinout](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/ESP32-DOIT-DEVKIT-V1-Board-Pinout-30-GPIOs-Copy.png?quality=100&strip=all&ssl=1)
   * 1x [DHT22/AM2302 Digital Temperature And Humidity Sensor](https://a.co/d/7EfM90X)
   * 1x [Capacitive Soil Moisture Sensor](https://a.co/d/dryRND9)
+  * 1x [VEML7700 Ambient Light Sensor](https://a.co/d/gmQb5fa)
 
 ## Step 1: Wire Prototype
-![moisture_sensor_dry_calibration](https://github.com/bklen/esp32-plant-monitor/assets/6707864/0384db8d-674f-4a84-a8d5-9855474cc3c2)
+![prototype](https://github.com/bklen/esp32-plant-monitor/assets/6707864/bdecdc65-500c-43bd-852b-1601ec918a83)
   1. Connect the analog output from the soil moisture sensor to pin 33(ADC1 CH5)
   2. Connect the data out from the DHT22 to GPIO 32
+  3. Connect the SDA pin from the ambient light sensor to GPIO 21
+  4. Connect the SCL pin from the ambient light sensor to GPIO 22
 
 Note ([From the ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/v4.2/esp32/api-reference/peripherals/adc.html))
 - "ADC2 is used by the Wi-Fi driver. Therefore the application can only use ADC2 when the Wi-Fi driver has not started."
@@ -50,7 +53,7 @@ Note ([From the ESP-IDF documentation](https://docs.espressif.com/projects/esp-i
      * MQTT URI + Username and Password(if applicable)
   6. Flash the code onto the esp32
   7. Verify sensor data gets published to MQTT broker  
-     ![image](https://github.com/bklen/esp32-plant-monitor/assets/6707864/3fbd3a8a-0111-409d-8505-5945d8ccf357)
+     ![image](https://github.com/bklen/esp32-plant-monitor/assets/6707864/01d3b955-a041-49b9-b8dc-67aec4410d4f)
 
 ## Step 3: (Optional) Integrate Plant Monitor with Home Assistant
   1. Edit Home Assitant configuration.yaml
