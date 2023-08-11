@@ -7,7 +7,8 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "cJSON.h"
-//#include "sdkconfig.h"
+
+#include "connect.h"
 
 #define SSID CONFIG_WIFI_SSID
 #define PASSWORD CONFIG_WIFI_PASSWORD

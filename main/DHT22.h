@@ -1,6 +1,6 @@
 /* 
-	DHT22 temperature sensor driver
-*/
+ * DHT22 temperature sensor driver
+ */
 
 #ifndef DHT22_H_
 #define DHT22_H_

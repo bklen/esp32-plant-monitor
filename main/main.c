@@ -6,21 +6,24 @@
 #include "freertos/queue.h"
 #include "driver/adc.h"
 #include "driver/gpio.h"
-#include "DHT22.h"
-#include "moisture_sensor.h"
-#include "esp_event_loop.h"
+//#include "driver/i2c.h"
 #include "esp_wifi.h"
 #include "esp_log.h"
-#include "nvs_flash.h"
+#include "esp_err.h"
 #include "cJSON.h"
-#include "connect.h"
 #include "mqtt_client.h"
 
-#define TAG "MQTT"
+#include "connect.h"
+#include "veml7700.h"
+#include "DHT22.h"
+#include "moisture_sensor.h"
 
+#define TAG "MQTT"
 #define URI CONFIG_MQTT_URI
 #define USERNAME CONFIG_MQTT_USERNAME
 #define PASSWORD CONFIG_MQTT_PASSWORD
+#define READING_QUEUE_SIZE 300
+#define SENSOR_READ_DELAY 20000
 
 xQueueHandle readingQueue;
 TaskHandle_t taskHandle;
@@ -78,7 +81,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 
 void MQTTLogic(char* sensorReading)
 {
-    char data[100];
+    char data[READING_QUEUE_SIZE];
     uint32_t command = 0;
     esp_mqtt_client_config_t mqttConfig = {
         .uri = URI,
@@ -119,7 +122,7 @@ void OnConnected(void *params)
 {
     while (true)
     {
-        char sensorReading[100];
+        char sensorReading[READING_QUEUE_SIZE];
         if (xQueueReceive(readingQueue, &sensorReading, portMAX_DELAY))
         {
             ESP_ERROR_CHECK(esp_wifi_start());
@@ -132,13 +135,27 @@ void OnConnected(void *params)
 
 void sensor_reader_task(void *params)
 {
-    setDHTgpio(GPIO_NUM_32);
-    setMoistureSensorADC(ADC1_CHANNEL_5);
+    // Initialize I2C for veml7700 sensor
+    set_i2c_gpio(GPIO_NUM_21, GPIO_NUM_22);
+    i2c_master_setup();
 
+    setMoistureSensorADC(ADC1_CHANNEL_5);   // (GPIO33)
+    setDHTgpio(GPIO_NUM_32);
+
+    // initial delay for sensors to normalize
+    vTaskDelay(20000 / portTICK_PERIOD_MS);
+    
     while (true)
     {
 		cJSON *root;
         root = cJSON_CreateObject();
+
+        // read ambient light levels and add to JSON
+        read_veml7700();
+        cJSON_AddNumberToObject(root, "lux_als", get_lux_als());
+        cJSON_AddNumberToObject(root, "fc_als", get_fc_als());
+        cJSON_AddNumberToObject(root, "lux_white", get_lux_white());
+        cJSON_AddNumberToObject(root, "fc_white", get_fc_white());
         
         // read moisture level and add to JSON
         readMoistureSensor();
@@ -147,15 +164,17 @@ void sensor_reader_task(void *params)
         // read temperature + humidity and add to JSON
         uint32_t ret = readDHT();
         errorHandler(ret);
+
+        
         cJSON_AddNumberToObject(root, "temperature", getTemperatureF());
         cJSON_AddNumberToObject(root, "humidity", getHumidity());
 
-        char my_json_string[100];
+        char my_json_string[READING_QUEUE_SIZE];
         sprintf(my_json_string, "%s", cJSON_Print(root));
         xQueueSend(readingQueue, &my_json_string, 2000 / portTICK_PERIOD_MS);
         cJSON_Delete(root);
 
-        vTaskDelay(20000 / portTICK_PERIOD_MS);
+        vTaskDelay(SENSOR_READ_DELAY / portTICK_PERIOD_MS);
     }
 }
 
@@ -169,7 +188,7 @@ void app_main()
     }
     else
     {
-        readingQueue = xQueueCreate(sizeof(char), 100);
+        readingQueue = xQueueCreate(sizeof(char), READING_QUEUE_SIZE);
 
         wifiInit();
 

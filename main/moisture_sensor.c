@@ -1,6 +1,6 @@
-/*------------------------------------------------------------------------------
-	Capacitive soil moisture sensor driver for ESP32
----------------------------------------------------------------------------------*/
+/*
+ * Capacitive soil moisture sensor driver for ESP32
+ */
 
 #include <stdio.h>
 #include "esp_log.h"

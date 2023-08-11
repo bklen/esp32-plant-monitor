@@ -10,7 +10,7 @@
     "idf.openOcdConfigs": [
         "board/esp32-wrover-kit-3.3v.cfg"
     ],
-    "idf.portWin": "COM1",
+    "idf.portWin": "COM10",
     "idf.pythonBinPathWin": "C:/esp/tools/Espressif/python_env/idf4.4_py3.11_env/Scripts/python.exe",
     "idf.toolsPathWin": "C:\\esp\\tools\\Espressif",
     "idf.flashType": "JTAG",
@@ -41,6 +41,17 @@
         "task.h": "c",
         "stdio.h": "c",
         "moisture_sensor.h": "c",
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "*.inc": "c",
+        "connect.h": "c",
+        "i2c.h": "c",
+        "semphr.h": "c",
+        "i2c_types.h": "c",
+        "soc_caps.h": "c",
+        "unity.h": "c",
+        "dht22.h": "c",
+        "esp_err.h": "c",
+        "mqtt_client.h": "c",
+        "veml7700.h": "c"
     }
 }

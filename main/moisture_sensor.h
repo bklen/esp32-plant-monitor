@@ -1,6 +1,6 @@
 /* 
-	Capacitive soil moisture sensor driver
-*/
+ * Capacitive soil moisture sensor driver
+ */
 
 #ifndef MOISTURE_SENSOR_H_
 #define MOISTURE_SENSOR_H_

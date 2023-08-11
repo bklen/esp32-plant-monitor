@@ -1,8 +1,6 @@
-/*------------------------------------------------------------------------------
-	DHT22 temperature & humidity sensor driver for ESP32
----------------------------------------------------------------------------------*/
-
-#define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
+/*
+ * DHT22 temperature & humidity sensor driver for ESP32
+ */
 
 #include <stdio.h>
 #include "esp_log.h"
@@ -32,7 +30,6 @@ void setDHTgpio( uint32_t gpio )
 
 float getHumidity() { return humidity; }
 float getTemperature() { return temperature; }
-//float getTemperatureF() { return (temperature * 9/5) + 32; }
 float getTemperatureF() { return (temperature * 1.8) + 32.0; }
 
 // == error handler ===============================================
