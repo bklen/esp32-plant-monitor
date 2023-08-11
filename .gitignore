@@ -1,3 +1,4 @@
+.gitignore
 build
 sdkconfig
 README.md
