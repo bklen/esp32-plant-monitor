@@ -60,6 +60,11 @@ Note ([From the ESP-IDF documentation](https://docs.espressif.com/projects/esp-i
      ```
      mqtt:
        sensor:
+         - name: "Brandon Desk Plant Light Intensity"
+           state_topic: "sensor/plantmonitor"
+           icon: mdi:white-balance-sunny
+           unit_of_measurement: "lux"
+           value_template: "{{ value_json.lux_white | float | round()}}"
          - name: "Brandon Desk Plant Temperature"
            state_topic: "sensor/plantmonitor"
            icon: mdi:thermometer
@@ -82,13 +87,16 @@ Note ([From the ESP-IDF documentation](https://docs.espressif.com/projects/esp-i
      entities:
        - entity: sensor.brandon_desk_plant_moisture
          name: Plant Soil Moisture
+       - entity: sensor.brandon_desk_plant_moisture
+         name: Plant Soil Moisture
        - entity: sensor.brandon_desk_plant_temperature
          name: Plant Temperature
        - entity: sensor.brandon_desk_plant_humidity
          name: Plant Humidity
      title: Brandon's Desk
      ```
-     ![image](https://github.com/bklen/esp32-plant-monitor/assets/6707864/c275f738-0ce4-46a3-b3b6-4571bfce42e9)
+     ![image](https://github.com/bklen/esp32-plant-monitor/assets/6707864/e2544279-d5f7-46df-aca6-bb619ebdeea6)
+
 
 
 
